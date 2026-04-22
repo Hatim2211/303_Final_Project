@@ -1,10 +1,33 @@
+body {
+  margin: 0;
+  background: black;
+  color: white;
+}
+
+#intro-screen,
+h1 {
+  text-align: center;
+}
+
+.site-header,
+#intro-screen {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.site-header {
+  background: #d4a017;
+  color: white;
+  padding: 20px;
+}
+
+.site-header h1 {
+  margin: 0;
+}
+
 main {
   max-width: 1000px;
   margin: 0 auto;
-}
-
-#intro-screen {
-  text-align: center;
+  padding: 16px;
 }
 
 #intro-screen > p {
@@ -32,4 +55,18 @@ main {
 
 .goddess-photos img {
   width: 100%;
+}
+
+#start-button {
+  background: #d4a017;
+  color: white;
+  border: 2px solid #d4a017;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font: inherit;
+  cursor: pointer;
+}
+
+#start-button:hover {
+  background: black;
 }
