@@ -1,0 +1,35 @@
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#intro-screen {
+  text-align: center;
+}
+
+#intro-screen > p {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.goddess-layout {
+  margin: 20px auto;
+}
+
+.goddess-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.goddess-row > * {
+  flex: 1 1 0;
+  max-width: 280px;
+  margin: 0;
+}
+
+.goddess-photos img {
+  width: 100%;
+}
