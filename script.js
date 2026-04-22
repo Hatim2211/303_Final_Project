@@ -141,6 +141,7 @@ const note = document.getElementById("note");
 const answers = document.getElementById("answers");
 const extraAnswers = document.getElementById("extra-answers");
 const resultName = document.getElementById("result-name");
+const resultImage = document.getElementById("result-image");
 const resultAnalysis = document.getElementById("result-analysis");
 const startButton = document.getElementById("start-button");
 const restartButton = document.getElementById("restart-button");
@@ -150,6 +151,12 @@ const jumpIntroButton = document.getElementById("jump-intro-button");
 const questionJumpButtons = document.getElementById("question-jump-buttons");
 const resultJumpButtons = document.getElementById("result-jump-buttons");
 const jumpWorksCitedButton = document.getElementById("jump-works-cited-button");
+
+const goddessImages = {
+  Hera: "photos/Hera.webp",
+  Athena: "photos/Athena.webp",
+  Aphrodite: "photos/Aphrodite.webp"
+};
 
 const goddessAnalyses = {
   Hera: [
@@ -178,6 +185,18 @@ function hideScreens() {
   worksCitedScreen.hidden = true;
 }
 
+function animateScreen(screen) {
+  screen.classList.remove("screen-animation");
+  void screen.offsetWidth;
+  screen.classList.add("screen-animation");
+}
+
+function animateResultScreen() {
+  resultScreen.classList.remove("screen-animation", "result-screen-animation");
+  void resultScreen.offsetWidth;
+  resultScreen.classList.add("result-screen-animation");
+}
+
 function startQuiz() {
   hideScreens();
   quizScreen.hidden = false;
@@ -189,7 +208,7 @@ function showQuestion() {
 
   progress.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
   question.textContent = current.text;
-  note.textContent = current.note || "";
+  note.innerHTML = current.note ? current.note.replace(/\bnever\b/gi, '<span class="red-word">never</span>') : "";
   answers.innerHTML = "";
   extraAnswers.innerHTML = "";
 
@@ -205,6 +224,8 @@ function showQuestion() {
       answers.appendChild(button);
     }
   });
+
+  animateScreen(quizScreen);
 }
 
 function chooseAnswer(points) {
@@ -229,10 +250,17 @@ function showResult() {
 
   const winningGoddess = goddesses[highestScoreIndex];
 
-  resultName.textContent = winningGoddess;
-  showAnalysis(winningGoddess);
+  showResultContent(winningGoddess);
   hideScreens();
   resultScreen.hidden = false;
+  animateResultScreen();
+}
+
+function showResultContent(goddess) {
+  resultName.textContent = goddess;
+  resultImage.src = goddessImages[goddess];
+  resultImage.alt = goddess;
+  showAnalysis(goddess);
 }
 
 function showAnalysis(goddess) {
@@ -252,11 +280,13 @@ function showAnalysis(goddess) {
 function showWorksCited() {
   hideScreens();
   worksCitedScreen.hidden = false;
+  animateScreen(worksCitedScreen);
 }
 
 function backToResult() {
   hideScreens();
   resultScreen.hidden = false;
+  animateResultScreen();
 }
 
 function restartQuiz() {
@@ -264,6 +294,7 @@ function restartQuiz() {
   currentQuestion = 0;
   hideScreens();
   introScreen.hidden = false;
+  animateScreen(introScreen);
 }
 
 function jumpToQuestion(questionIndex) {
@@ -275,10 +306,10 @@ function jumpToQuestion(questionIndex) {
 }
 
 function jumpToResult(goddess) {
-  resultName.textContent = goddess;
-  showAnalysis(goddess);
+  showResultContent(goddess);
   hideScreens();
   resultScreen.hidden = false;
+  animateResultScreen();
 }
 
 function makeTestingJumps() {
