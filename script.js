@@ -1,7 +1,10 @@
+// keep goddess order same
 const goddesses = ["Hera", "Athena", "Aphrodite"];
+// score totals start
 let scores = [0, 0, 0];
 let currentQuestion = 0;
 
+// all quiz data
 const questions = [
   {
     text: "What matters most to you in life?",
@@ -152,6 +155,7 @@ const questionJumpButtons = document.getElementById("question-jump-buttons");
 const resultJumpButtons = document.getElementById("result-jump-buttons");
 const jumpWorksCitedButton = document.getElementById("jump-works-cited-button");
 
+// pics for final result
 const goddessImages = {
   Hera: "photos/Hera.webp",
   Athena: "photos/Athena.webp",
@@ -178,6 +182,7 @@ const goddessAnalyses = {
   ]
 };
 
+// hide every screen first
 function hideScreens() {
   introScreen.hidden = true;
   quizScreen.hidden = true;
@@ -203,6 +208,7 @@ function startQuiz() {
   showQuestion();
 }
 
+// load next qestion
 function showQuestion() {
   const current = questions[currentQuestion];
 
@@ -228,6 +234,7 @@ function showQuestion() {
   animateScreen(quizScreen);
 }
 
+// add score after click
 function chooseAnswer(points) {
   scores = scores.map((score, index) => score + points[index]);
   currentQuestion++;
@@ -239,6 +246,7 @@ function chooseAnswer(points) {
   }
 }
 
+// pick highest score one
 function showResult() {
   let highestScoreIndex = 0;
 
@@ -312,6 +320,7 @@ function jumpToResult(goddess) {
   animateResultScreen();
 }
 
+// quick testing buttons
 function makeTestingJumps() {
   questions.forEach((questionItem, index) => {
     const button = document.createElement("button");

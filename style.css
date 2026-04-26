@@ -1,9 +1,11 @@
+/* main page colors */
 body {
   margin: 0;
   background: black;
   color: white;
 }
 
+/* center the big stuff */
 #intro-screen,
 #quiz-screen,
 #result-screen,
@@ -16,6 +18,7 @@ h1 {
   font-family: Georgia, "Times New Roman", serif;
 }
 
+/* gold header looks nice */
 .site-header {
   background: #d4a017;
   color: white;
@@ -42,6 +45,7 @@ main {
   margin: 20px auto;
 }
 
+/* rows hold the cards */
 .goddess-row {
   display: flex;
   justify-content: center;
@@ -85,6 +89,7 @@ main {
   cursor: pointer;
 }
 
+/* hover state for butons */
 #start-button:hover,
 #restart-button:hover,
 #works-cited-button:hover {
@@ -104,6 +109,7 @@ main {
   gap: 24px;
 }
 
+/* answer buttons stay big */
 #answers button,
 #extra-answers button {
   flex: 1 1 0;
@@ -141,6 +147,7 @@ main {
   margin-top: 80px;
 }
 
+/* small fade move anim */
 .screen-animation {
   animation: fade-slide-in 250ms ease;
 }
